@@ -1,0 +1,55 @@
+﻿@using Deneme01.Models
+@model List<Siparis>
+
+@{
+    ViewBag.Title = "Sipariş Listele";
+    Layout = "~/Views/Shared/_LayoutNavBar.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Sipariş Listele</title>
+</head>
+<body>
+
+    <table class="table table-bordered">
+        <tr style="font-size:16px">
+            <th>SiparisID</th>
+            <th>Siparişi Gerçekleştiren Müşterinin MusteriID Bilgisi</th>
+            <th>Sipariş Edilen Ürünün ÜrünID Bilgisi</th>
+            <th>Sipariş Tarihi</th>
+            <th>Sipariş Edilen Ürün Adeti</th>
+            <th>Ürünün Son Fiyat Bilgisi</th>
+
+            <th>Sil</th>
+            <th>Güncelle</th>
+        </tr>
+        @if (Model != null)
+        {
+            foreach (var x in Model)
+            {
+                <tr style="font-size:14px">
+                    <td>@x.SiparisID</td>
+                    <td>@x.MusteriID</td>
+                    <td>
+                        @if (x.UrunX != null)
+                        {
+                            @x.UrunX.UrunID
+                        }
+                    </td>
+                    <td>@x.Siparis_Edilen_Tarih</td>
+                    <td>@x.Siparis_Edilen_Urun_Adet</td>
+
+                    @*Sipariş Son_Fiyat bilgisini Urun tablosunda bulunan verileri kullanıp formulleyerek gerçekleştirdim.*@
+                    <td>@(x.UrunX.Fiyat_Bilgisi * (1-x.UrunX.Yüzde_Cinsinden_Indirim_Miktari))</td>
+
+                    <td><a href="/Siparis/SiparisSil/@x.SiparisID" class="btn btn-danger">Sil</a></td>
+                    <td><a href="/Siparis/SiparisGuncelle/@x.SiparisID" class="btn btn-success">Düzenle</a></td>
+                </tr>
+            }
+        }
+    </table>
+</body>
+</html>

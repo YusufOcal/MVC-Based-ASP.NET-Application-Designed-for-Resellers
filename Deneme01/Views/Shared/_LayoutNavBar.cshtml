@@ -1,0 +1,42 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" sizes="96x96" href="~/icons8-web-96.ico">
+
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">ADMİN</a>
+            </div>
+            <ul class="nav navbar-nav" style="font-size:16px; font-weight:bold">
+                <li><a href="/Musteri/MusteriListele">Müşteri Listesi</a></li>
+                <li><a href="/Urun/UrunListele">Ürün Listesi</a></li>
+                <li><a href="/Siparis/SiparisListele">Sipariş Listesi</a></li>
+                <li><a href="/Musteri/MusteriEkle">Müşteri Ekle</a></li>
+                <li><a href="/Urun/UrunEkle">Ürün Ekle</a></li>
+                <li><a href="/Siparis/SiparisEkle">Sipariş Ekle</a></li>
+                <li><a href="/Kart/bankaView">Banka Bilgi Kartı</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        @RenderBody()
+    </div>
+
+</body>
+</html>

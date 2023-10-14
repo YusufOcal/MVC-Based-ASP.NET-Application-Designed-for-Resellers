@@ -1,0 +1,25 @@
+﻿@model Deneme01.Models.Urun
+
+@{
+    ViewBag.Title = "Ürün Sil";
+    Layout = "~/Views/Shared/_LayoutNavBar.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Ürün Sil</title>
+</head>
+<body>
+    <h2>Ürünü Sil</h2>
+
+    <p>Gerçekten bu Ürünü silmek istiyor musunuz?</p>
+
+    @using (Html.BeginForm("UrunSilOnay", "Urun", new { id = Model.UrunID }, FormMethod.Post))
+    {
+        <button type="submit" class="btn btn-warning" style="margin-right:20px; block-size:40px; font-size:15px;">Sil</button>
+        <a href="@Url.Action("UrunListele", "Urun")" class="btn btn-secondary" style="font-size:16px"><b>İptal</b></a>
+    }
+</body>
+</html>

@@ -1,0 +1,49 @@
+﻿@model Deneme01.Models.Musteri
+@{
+    ViewBag.Title = "Müşteri Güncelle";
+    Layout = "~/Views/Shared/_LayoutNavBar.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Müşteri Güncelle</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(x => x.MusteriID) <!-- UrunID bilgisini saklı bir şekilde post işlemine gönderiyoruz. -->
+
+        <div style="margin-bottom:20px">
+            <label>[GÜNCELLEME] Müşterinin Adı</label>
+            @Html.TextBoxFor(x => x.Musteri_Adi, new { @class = "form-control", style = "font-size:15px" })
+        </div>
+        <div style="margin-bottom:20px">
+            <label>[GÜNCELLEME] Müşterinin Soyadı</label>
+            @Html.TextBoxFor(x => x.Musteri_Soyadi, new { @class = "form-control", style = "font-size:15px" })
+        </div>
+        <div style="margin-bottom:20px">
+            <label>[GÜNCELLEME] Müşterinin Telefon No. Bilgisi</label>
+            @Html.TextBoxFor(x => x.Musteri_Telefon_No, new { @class = "form-control", style = "font-size:15px" })
+        </div>
+        <div style="margin-bottom:20px">
+            <label>[GÜNCELLEME] Müşterinin Cinsiyet Bilgisi --> (Erkek için 'True', Kadın için 'False' yazılmak zorundadır.)</label>
+            @Html.TextBoxFor(x => x.Musteri_Cinsiyet, new { @class = "form-control", style = "font-size:15px" })
+        </div>
+        <div style="margin-bottom:20px">
+            <label>[GÜNCELLEME] Müşterinin Siparişi Gerçekleştirdiği Şehir Bilgisi</label>
+            @Html.TextBoxFor(x => x.Musteri_Sehir, new { @class = "form-control", style = "font-size:15px" })
+        </div>
+        <div style="margin-bottom:20px">
+            <label>[GÜNCELLEME] Müşterinin E-Mail Bilgisi</label>
+            @Html.TextBoxFor(x => x.Musteri_E_Mail, new { @class = "form-control", style = "font-size:15px" })
+        </div>
+
+        <div>
+            <button type="submit" class="btn btn-warning" style="margin-right:20px; block-size:40px; font-size:15px;">Güncelle</button>
+            <a href="@Url.Action("MusteriListele", "Musteri")" class="btn btn-secondary" style="font-size:16px"><b>İptal</b></a>
+        </div>
+    }
+</body>
+</html>

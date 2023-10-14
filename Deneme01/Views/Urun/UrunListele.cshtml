@@ -1,0 +1,78 @@
+﻿@using Deneme01.Models
+@model List<Urun>
+
+@{
+    ViewBag.Title = "Ürün Listele";
+    Layout = "~/Views/Shared/_LayoutNavBar.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Ürün Listele</title>
+</head>
+<body>
+
+    <table class="table table-bordered">
+        <tr style="font-size:16px">
+            <th>ÜrünID</th>
+            <th>Ürün Adı</th>
+            <th>Ürün Renk Bilgisi</th>
+            <th>Ürün Türü</th>
+            <th>Bulunduğu Kategori Bilgisi</th>
+            <th>Stok Bilgisi</th>
+            <th>Garanti Süresi(Ay)</th>
+            <th>Tahmini Teslim Tarihi</th>
+            <th>Fiyat Bilgisi</th>
+            <th>İndirim Miktarı(Yüzde Olarak)</th>
+            <th>Ürüne Özel: Banka Adi / Taksit Miktarı</th>
+
+
+            <th>Sil</th>
+            <th>Güncelle</th>
+        </tr>
+        @if (Model != null)
+        {
+            foreach (var x in Model)
+            {
+                <tr style="font-size:14px">
+                    <td>@x.UrunID</td>
+                    <td>@x.Urun_Adi</td>
+                    <td>@x.Urun_Renk_Bilgisi</td>
+                    @*Urun sınıfı ile ilişkide olan AltKategori sınıfı içindeki verilere erişebilmek için yine Urun sınıfı içerisinde bulunan AltKategoriX nesnesini kullanıyoruz.*@
+                    <td>
+                        @if (x.AltKategoriX != null)
+                        {
+                            @x.AltKategoriX.AltKategori_Adi
+                        }
+                    </td>
+                    @*UstKategori sınıfı ile AltKategori sınıfı ilişkide AltKategori sınıfı ile de Urun sınıfı ilişkide. Bu sayede UrunListeleme ekranından UstKategori sınıfından bulunan bir veriyi yazdırabiliyoruz.*@
+                    <td>
+                        @*Alttan en üste olacak şekilde bütün ilişki nesnelerinin null olmadığından emin olacak şekilde ilerlemeliyiz. Yoksa NullReferanceException hatası alıyoruz.*@
+                        @if (x.AltKategoriX != null && x.AltKategoriX.UstKategoriX != null)
+                        {
+                            @x.AltKategoriX.UstKategoriX.UstKategori_Adi
+                        }
+                    </td>
+                    <td>@x.Stok_Bilgisi</td>
+                    <td>@x.Garanti_Süresi_AY</td>
+                    <td>@x.Max_Teslimat_Tarihi</td>
+                    <td>@x.Fiyat_Bilgisi</td>
+                    <td>@x.Yüzde_Cinsinden_Indirim_Miktari</td>
+                    @*Urun sınıfı ile Banka sınıfı ilişkide Urun sınıfında bulunan BankaX nesnesini kullanarak Banka sınıfı içerisindeki verilere erişebiliyoruz.*@
+                    <td>
+                        @if (x.BankaX != null)
+                        {
+                            @(x.BankaX.Banka_Adi + " / " + x.BankaX.Aylik_Taksit_Miktari)
+                        }
+                    </td>
+
+                    <td><a href="/Urun/UrunSil/@x.UrunID" class="btn btn-danger">Sil</a></td>
+                    <td><a href="/Urun/UrunGuncelle/@x.UrunID" class="btn btn-success">Düzenle</a></td>
+                </tr>
+            }
+        }
+    </table>
+</body>
+</html>

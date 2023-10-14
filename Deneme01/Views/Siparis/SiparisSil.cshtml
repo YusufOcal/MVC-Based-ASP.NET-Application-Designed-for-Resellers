@@ -1,0 +1,25 @@
+﻿@model Deneme01.Models.Siparis
+
+@{
+    ViewBag.Title = "Sipariş Sil";
+    Layout = "~/Views/Shared/_LayoutNavBar.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Sipariş Sil</title>
+</head>
+<body>
+    <h2>Sipariş Sil</h2>
+
+    <p>Gerçekten bu Siparişi silmek istiyor musunuz?</p>
+
+    @using (Html.BeginForm("SiparisSilOnay", "Siparis", new { id = Model.SiparisID }, FormMethod.Post))
+    {
+        <button type="submit" class="btn btn-warning" style="margin-right:20px; block-size:40px; font-size:15px;">Sil</button>
+        <a href="@Url.Action("SiparisListele", "Siparis")" class="btn btn-secondary" style="font-size:16px"><b>İptal</b></a>
+    }
+</body>
+</html>

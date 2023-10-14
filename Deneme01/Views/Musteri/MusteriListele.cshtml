@@ -1,0 +1,59 @@
+﻿@using Deneme01.Models
+@model List<Musteri>
+
+@{
+    ViewBag.Title = "Müşteri Listele";
+    Layout = "~/Views/Shared/_LayoutNavBar.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Müşteri Listele</title>
+</head>
+<body>
+
+    <table class="table table-bordered">
+        <tr style="font-size:16px">
+            <th>MüşteriID</th>
+            <th>Müşterinin Adı</th>
+            <th>Müşterinin Soyadı</th>
+            <th>Müşterinin Telefon No. Bilgisi</th>
+            <th>Müşterinin Cinsiyet Bilgisi</th>
+            <th>Müşterinin Siparişi Gerçekleştirdiği Şehir</th>
+            <th>Müşterinin E-Mail Bilgisi</th>
+       
+            <th>Sil</th>
+            <th>Güncelle</th>
+        </tr>
+        @if (Model != null)
+        {
+            foreach (var x in Model)
+            {
+                <tr style="font-size:14px">
+                    <td>@x.MusteriID</td>
+                    <td>@x.Musteri_Adi</td>
+                    <td>@x.Musteri_Soyadi</td>
+                    <td>@x.Musteri_Telefon_No</td>
+                    <td>
+                        @if (x.Musteri_Cinsiyet == true)
+                         {
+                            <span>Erkek</span>
+                         }
+                         else
+                         {
+                            <span>Kadın</span>
+                         }
+                    </td>
+                    <td>@x.Musteri_Sehir</td>
+                    <td>@x.Musteri_E_Mail</td>
+
+                    <td><a href="/Musteri/MusteriSil/@x.MusteriID" class="btn btn-danger">Sil</a></td>
+                    <td><a href="/Musteri/MusteriGuncelle/@x.MusteriID" class="btn btn-success">Düzenle</a></td>
+                </tr>
+            }
+        }
+    </table>
+</body>
+</html>

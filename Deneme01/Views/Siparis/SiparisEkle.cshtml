@@ -1,0 +1,45 @@
+﻿@model Deneme01.Models.Siparis
+
+@{
+    ViewBag.Title = "Sipariş Ekle";
+    Layout = "~/Views/Shared/_LayoutNavBar.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Yeni Sipariş Ekle</title>
+</head>
+<body>
+    <h2>Yeni Sipariş Ekle</h2>
+
+    <form class="form-group" method="post">
+
+        <div style="margin-bottom:20px">
+            <label>Siparişi Yapan Kişinin MüşteriID Bilgisi</label>
+            @Html.TextBoxFor(x => x.MusteriID, new { @class = "form-control", style = "font-size:15px" })
+        </div>
+        <div style="margin-bottom:20px">
+            <label>Sipariş Edilen Ürünün UrunID Bilgisi</label>
+            @Html.TextBoxFor(x => x.UrunID, new { @class = "form-control", style = "font-size:15px" })
+        </div>
+        <div style="margin-bottom:20px">
+            <label>Sipariş Tarihi</label>
+            @Html.TextBoxFor(x => x.Siparis_Edilen_Tarih, new { @class = "form-control", style = "font-size:15px" })
+        </div>
+        <div style="margin-bottom:20px">
+            <label>Sipariş Edilen Adet</label>
+            @Html.TextBoxFor(x => x.Siparis_Edilen_Urun_Adet, new { @class = "form-control", style = "font-size:15px" })
+        </div>
+
+
+        <div>
+            <button type="submit" class="btn btn-success" style="margin-right:25px; block-size:42px; font-size:15px;">Ekle</button>
+            <a href="@Url.Action("SiparisListele", "Siparis")" class="btn btn-secondary" style="font-size:17px"><b>Geri</b></a>
+        </div>
+
+    </form>
+
+</body>
+</html>

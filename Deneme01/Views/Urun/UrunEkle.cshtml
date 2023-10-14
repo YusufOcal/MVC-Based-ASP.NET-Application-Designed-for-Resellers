@@ -1,0 +1,64 @@
+﻿@model Deneme01.Models.Urun
+
+@{
+    ViewBag.Title = "Ürün Ekle";
+    Layout = "~/Views/Shared/_LayoutNavBar.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Yeni Ürün Ekle</title>
+</head>
+<body>
+    <h2>Yeni Ürün Ekle</h2>
+
+    <form class="form-group" method="post">
+
+        <div style="margin-bottom:20px">
+            <label>YENİ Ürünün Adı</label>
+            @Html.TextBoxFor(x => x.Urun_Adi, new { @class = "form-control", style = "font-size:15px" })
+        </div>
+        <div style="margin-bottom:20px">
+            <label>YENİ Ürünün Renk Bilgisi</label>
+            @Html.TextBoxFor(x => x.Urun_Renk_Bilgisi, new { @class = "form-control", style = "font-size:15px" })
+        </div>
+        <div style="margin-bottom:20px">
+            <label>YENİ Ürünün Stok Bilgisi</label>
+            @Html.TextBoxFor(x => x.Stok_Bilgisi, new { @class = "form-control", style = "font-size:15px" })
+        </div>
+        <div style="margin-bottom:20px">
+            <label>YENİ Ürünün Garanti Süresi(AY)</label>
+            @Html.TextBoxFor(x => x.Garanti_Süresi_AY, new { @class = "form-control", style = "font-size:15px" })
+        </div>
+        <div style="margin-bottom:20px">
+            <label>YENİ Ürünün Tahmini Teslimat Tarihi</label>
+            @Html.TextBoxFor(x => x.Max_Teslimat_Tarihi, new { @class = "form-control", style = "font-size:15px" })
+        </div>
+        <div style="margin-bottom:20px">
+            <label>YENİ Ürünün Fiyat Bilgisi</label>
+            @Html.TextBoxFor(x => x.Fiyat_Bilgisi, new { @class = "form-control", style = "font-size:15px" })
+        </div>
+        <div style="margin-bottom:20px">
+            <label>YENİ Ürünün İndirim Miktarı(Yüzde Olarak)</label>
+            @Html.TextBoxFor(x => x.Yüzde_Cinsinden_Indirim_Miktari, new { @class = "form-control", style = "font-size:15px" })
+        </div>
+        <div style="margin-bottom:20px">
+            <label>YENİ Ürüne Özel Kullanılan 'BankaID' Bilgisi</label>
+            @Html.TextBoxFor(x => x.BankaID, new { @class = "form-control", style = "font-size:15px" })
+        </div>
+        <div style="margin-bottom:20px">
+            <label>YENİ Ürünün Bulunduğu Alt Kategori'ye Ait 'AltKategoriID' Bilgisi</label>
+            @Html.TextBoxFor(x => x.AltKategoriID, new { @class = "form-control", style = "font-size:15px" })
+        </div>
+
+        <div>
+            <button type="submit" class="btn btn-success" style="margin-right:25px; block-size:42px; font-size:15px;">Ekle</button>
+            <a href="@Url.Action("UrunListele", "Urun")" class="btn btn-secondary" style="font-size:17px"><b>Geri</b></a>
+        </div>
+
+    </form>
+
+</body>
+</html>
